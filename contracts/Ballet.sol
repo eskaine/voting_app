@@ -2,17 +2,19 @@
 pragma solidity ^0.8.0;
 import "./Candidates.sol";
 
-contract Votes {
-    string public name;
-    address public owner;
+contract Ballot {
+    string public ballotName;
+    address public ballotAddress;
     address private candidatesContractAddress;
-    uint256 public totalVotes;
+    uint256 private totalVotes;
+    uint256 public endVotes;
+
     mapping (address => Vote) private voters;
     mapping (uint => uint) public candidateVotes;
 
-    constructor(string memory _name, address _candidatesContractAddress) {
-        name = _name;
-        owner = msg.sender;
+    constructor(string memory _ballotName, address _candidatesContractAddress) {
+        ballotName = _ballotName;
+        ballotAddress = msg.sender;
         candidatesContractAddress = _candidatesContractAddress;
     }
 
@@ -26,14 +28,15 @@ contract Votes {
     }
     
     function voteCandidate(string memory id, address voterAddress, uint voteResult) public {
-        require(owner != voterAddress);
+        require(ballotAddress != voterAddress);
 
         uint hasVoted = getVoterVote(voterAddress);
-        bool isVoteValid = checkVoteValidity(candidatesContractAddress, voteResult);
 
         if(hasVoted != 0) {
             revert("You have voted.");
         }
+
+        bool isVoteValid = checkVoteValidity(candidatesContractAddress, voteResult);
 
         if(!isVoteValid) {
             revert("Invalid vote.");
