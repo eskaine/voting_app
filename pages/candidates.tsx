@@ -2,30 +2,28 @@ import type { NextComponentType } from "next";
 import { useRouter } from "next/router";
 import { useContext, useEffect } from "react";
 import Page from "./hoc/Page";
-import candidates from "../utils/candidatesData";
-import { Candidate } from "../utils/model";
-import { VoteContext } from "../context/VoteContext";
+import { BallotContext } from "../provider/BallotProvider";
 import { CheckIcon, XIcon } from '@heroicons/react/solid';
 
 
 const Candidates: NextComponentType = () => {
-  const { connectedAccount, castVote, userVote, getUserVote } = useContext(VoteContext);
-  const router = useRouter();
+  // const { getCandidates } = useContext(BallotContext);
+  // const router = useRouter();
 
-  useEffect(() => {
-    if(!connectedAccount) {
-      router.push('/')
-    } else {
-      getUserVote();
-    }
-  });
+  // useEffect(() => {
+  //   if(!connectedAccount) {
+  //     router.push('/')
+  //   } else {
+  //     getUserVote();
+  //   }
+  // });
 
   return (
     <Page>
       <div className="w-96">
         <div className="pb-10 text-center text-4xl text-slate-900 font-bold">Candidates List</div>
         <div className="flex flex-col gap-5">
-          {candidates.map((candidate: Candidate, i: number) => (
+          {/* {candidates.map((candidate: Candidate, i: number) => (
             <div className="h-100 flex flex-row items-center">
               <div className="basis-3/4 flex items-center gap-5">
                 <div className={`portrait candidate-${candidate.id}`}></div>
@@ -40,7 +38,7 @@ const Candidates: NextComponentType = () => {
                 }
               </div>
             </div>
-          ))}
+          ))} */}
         </div>
       </div>
 

@@ -1,12 +1,12 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
-import { VoteProvider } from '../context/VoteContext';
+import '../styles/globals.css';
+import type { AppProps } from 'next/app';
+import { BallotProvider } from '../provider/BallotProvider';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <VoteProvider>
+    <BallotProvider>
       <Component {...pageProps} />
-    </VoteProvider>
+    </BallotProvider>
   )
 }
 

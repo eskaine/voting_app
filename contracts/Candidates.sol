@@ -32,4 +32,8 @@ contract Candidates {
         validVotes[5] = true;
         validVotes[6] = true;
     }
+
+    // function getCandidatesList(address voterAddress) public view returns(memory Candidate[]) {
+    //      return [candidates(1), candidates(2), candidates(3), candidates(4), candidates(5), candidates(6)];
+    // }
 }

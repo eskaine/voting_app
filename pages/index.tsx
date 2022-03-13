@@ -2,16 +2,18 @@ import type { NextComponentType } from "next";
 import { useRouter } from "next/router";
 import { useContext, useEffect } from "react";
 import Page from "./hoc/Page";
-import { VoteContext } from "../context/VoteContext";
+import { BallotContext } from "../provider/BallotProvider";
+
 
 const Home: NextComponentType = () => {
-  const { connectWallet, connectedAccount } = useContext(VoteContext);
+  const { account, connect, getCandidates } = useContext(BallotContext);
   const router = useRouter();
 
   useEffect(() => {
-    if(connectedAccount) {
-      router.push('/candidates')
-    }
+    getCandidates();
+    // if(account) {
+    //   router.push('/candidates')
+    // }
   });
 
   return (
@@ -19,7 +21,7 @@ const Home: NextComponentType = () => {
       <div className="text-center">
         <button
           className="px-4 py-3 text-white rounded-full bg-blue-600 font-medium"
-          onClick={connectWallet}
+          onClick={connect}
         >
           Login with Asgardian ID
         </button>
