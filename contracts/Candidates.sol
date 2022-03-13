@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: UNLICENSED
 
-pragma solidity ^0.8.0;
+pragma solidity ^0.7.6;
 
 contract Candidates {
     string public name;
@@ -31,9 +31,5 @@ contract Candidates {
         validVotes[4] = true;
         validVotes[5] = true;
         validVotes[6] = true;
-    }
-
-    function getCandidate(uint id) public view returns(Candidate memory) {
-        return candidates[id];
     }
 }

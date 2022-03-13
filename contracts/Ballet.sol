@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.0;
+pragma solidity ^0.7.6;
+import "@nomiclabs/buidler/console.sol";
 import "./Candidates.sol";
 
 contract Ballot {
@@ -29,7 +30,7 @@ contract Ballot {
     
     function voteCandidate(string memory id, address voterAddress, uint voteResult) public {
         require(ballotAddress != voterAddress);
-
+        
         uint hasVoted = getVoterVote(voterAddress);
 
         if(hasVoted != 0) {
